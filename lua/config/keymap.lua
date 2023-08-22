@@ -35,7 +35,7 @@ vim.keymap.set("n", "<leader>yp", function()
   local line_number = vim.fn.line(".")
   local file_line = file_name .. ":" .. line_number
 
-  vim.fn.setreg('"', file_line)
+  vim.fn.setreg('+', file_line)
   vim.notify("Copied to clipboard: " .. file_line, vim.log.levels.INFO)
 end)
 
