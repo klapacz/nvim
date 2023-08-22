@@ -1,5 +1,14 @@
 return {
   {
+    "andrewferrier/debugprint.nvim",
+    opts = {},
+    dependencies = {
+        "nvim-treesitter/nvim-treesitter"
+    },
+    version = "*"
+  },
+
+  {
     'nvim-pack/nvim-spectre',
     config = function ()
       require('spectre').setup()
