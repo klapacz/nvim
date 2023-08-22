@@ -52,7 +52,15 @@ return {
   {
     "sindrets/diffview.nvim",
     config = function ()
-      require("diffview").setup({})
+      local actions = require("diffview.actions")
+
+      require("diffview").setup({
+        keymaps = {
+          file_panel = {
+            { "n", "s", actions.toggle_stage_entry, { desc = "Stage / unstage the selected entry" } },
+          }
+        }
+      })
       -- TODO: add descriptions
       vim.keymap.set("n", "<leader>GG", ":DiffviewOpen<CR>", { noremap = true, silent = true })
       vim.keymap.set("n", "<leader>GQ", ":DiffviewClose<CR>", { noremap = true, silent = true })
