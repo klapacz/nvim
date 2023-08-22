@@ -14,8 +14,11 @@ return {
         adapters = {
           require("neotest-playwright").adapter({
             options = {
-               -- persist_project_selection = true,
-               -- enable_dynamic_test_discovery = true,
+              enable_dynamic_test_discovery = true,
+              preset = "debug",
+              env = {
+                DEBUG = "pw:webserver"
+              }
             }
           }),
         },
@@ -24,6 +27,9 @@ return {
           playwright = require("neotest-playwright.consumers").consumers,
         },
       })
+
+      vim.keymap.set("n", "<leader>tr", require("neotest").run.run , { noremap = true })
+      vim.keymap.set("n", "<leader>ta", require("neotest").run.attach , { noremap = true })
     end
   }
 }
