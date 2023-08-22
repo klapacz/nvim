@@ -62,9 +62,20 @@ return {
 
   {
     'folke/tokyonight.nvim',
+    dependencies = {
+      "f-person/auto-dark-mode.nvim"
+    },
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'tokyonight-day'
+      require('auto-dark-mode').setup({
+        update_interval = 1000,
+        set_dark_mode = function()
+          vim.cmd.colorscheme('tokyonight')
+        end,
+        set_light_mode = function()
+          vim.cmd.colorscheme('tokyonight-day')
+        end,
+      })
     end,
   },
 
