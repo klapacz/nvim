@@ -42,3 +42,6 @@ end)
 vim.keymap.set("n", "<leader>C", "<cmd>tabnew | tcd ~/.config/nvim/ | edit init.lua<cr>",
   { desc = "[C]d into config and edit" })
 
+-- visual move lines
+vim.keymap.set("v", "J", ":m '>+1<cr>gv=gv", {silent =true})
+vim.keymap.set("v", "K", ":m '<-2<cr>gv=gv", {silent =true})
