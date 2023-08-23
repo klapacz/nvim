@@ -4,6 +4,7 @@ return {
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
+  { 'f-person/git-blame.nvim', opts = {} },
 
   {
     'lewis6991/gitsigns.nvim',
