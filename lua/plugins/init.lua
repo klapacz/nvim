@@ -67,6 +67,7 @@ return {
     },
     priority = 1000,
     config = function()
+      vim.cmd.colorscheme('tokyonight')
       require('auto-dark-mode').setup({
         update_interval = 1000,
         set_dark_mode = function()
