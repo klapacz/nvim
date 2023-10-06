@@ -1,6 +1,6 @@
 return {
-	{ "tpope/vim-fugitive" },
-	{ "tpope/vim-rhubarb" },
+	-- copy link to file on github with <leader>gy
+	{ "ruifm/gitlinker.nvim", opts = {} },
 	{ "f-person/git-blame.nvim", opts = {} },
 
 	{
@@ -71,9 +71,18 @@ return {
 					},
 				},
 			})
-			-- TODO: add descriptions
-			vim.keymap.set("n", "<leader>GG", ":DiffviewOpen<CR>", { noremap = true, silent = true })
-			vim.keymap.set("n", "<leader>GF", ":DiffviewFileHistory %<CR>", { noremap = true, silent = true })
+			vim.keymap.set(
+				"n",
+				"<leader>GV",
+				":DiffviewOpen<CR>",
+				{ noremap = true, silent = true, desc = "[G]it [V]iew" }
+			)
+			vim.keymap.set(
+				"n",
+				"<leader>GF",
+				":DiffviewFileHistory %<CR>",
+				{ noremap = true, silent = true, desc = "[G]it [F]ile history" }
+			)
 		end,
 	},
 }

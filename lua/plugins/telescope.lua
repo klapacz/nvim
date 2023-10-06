@@ -12,6 +12,7 @@ local function keymap()
 			previewer = false,
 		}))
 	end, { desc = "[/] Fuzzily search in current buffer" })
+	vim.keymap.set("n", "<leader>GS", builtin.git_stash, { desc = "[G]it [S]tash" })
 
 	vim.keymap.set("n", "<leader>f", builtin.git_files, { desc = "Search [G]it [F]iles" })
 	vim.keymap.set("n", "<leader>F", builtin.find_files, { desc = "[S]earch [F]iles" })
@@ -37,17 +38,10 @@ return {
 			},
 		},
 		config = function()
-			-- [[ Configure Telescope ]]
-			-- See `:help telescope` and `:help telescope.setup()`
-			local action_state = require("telescope.actions.state")
-
 			require("telescope").setup({
-				defaults = {
-					mappings = {
-						i = {
-							["<C-u>"] = false,
-							["<C-d>"] = false,
-						},
+				pickers = {
+					git_files = {
+						show_untracked = true,
 					},
 				},
 			})
