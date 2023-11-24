@@ -32,7 +32,7 @@ local on_attach = function(_, bufnr)
 		buffer = bufnr,
 		callback = function()
 			vim.lsp.buf.format({
-				async = false,
+				async = true,
 				filter = function(client)
 					return client.name == "null-ls"
 				end,
@@ -107,9 +107,15 @@ local function config()
 			}),
 			null_ls.builtins.formatting.stylua,
 
+			-- eslint diagnostics and formatting
+			-- bun is used as executor
 			null_ls.builtins.diagnostics.eslint_d.with({
 				command = "bunx",
 				args = { "eslint_d", "-f", "json", "--stdin", "--stdin-filename", "$FILENAME" },
+			}),
+			null_ls.builtins.formatting.eslint_d.with({
+				command = "bunx",
+				args = { "eslint_d", "--fix-to-stdout", "--stdin", "--stdin-filename", "$FILENAME" },
 			}),
 			-- null_ls.builtins.diagnostics.tsc,
 			null_ls.builtins.diagnostics.actionlint,
@@ -138,7 +144,7 @@ return {
 			"folke/neodev.nvim",
 
 			-- null-ls
-			"jose-elias-alvarez/null-ls.nvim",
+			"nvimtools/none-ls.nvim",
 			"jay-babu/mason-null-ls.nvim",
 			"davidmh/cspell.nvim",
 		},
