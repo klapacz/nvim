@@ -108,16 +108,8 @@ local function config()
 			null_ls.builtins.formatting.stylua,
 
 			-- eslint diagnostics and formatting
-			-- bun is used as executor
-			null_ls.builtins.diagnostics.eslint_d.with({
-				command = "bunx",
-				args = { "eslint_d", "-f", "json", "--stdin", "--stdin-filename", "$FILENAME" },
-			}),
-			null_ls.builtins.formatting.eslint_d.with({
-				command = "bunx",
-				args = { "eslint_d", "--fix-to-stdout", "--stdin", "--stdin-filename", "$FILENAME" },
-			}),
-			-- null_ls.builtins.diagnostics.tsc,
+			null_ls.builtins.diagnostics.eslint,
+			null_ls.builtins.formatting.eslint,
 			null_ls.builtins.diagnostics.actionlint,
 
 			-- cspell.diagnostics,
